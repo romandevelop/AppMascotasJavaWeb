@@ -9,6 +9,7 @@
 <div class="row">
     <div class="col s6 offset-s3">
         <div class="card-panel">
+            <h4 class="center-align">Categoria</h4>
             <form action="control.do" method="POST">
                 <label>Nombre Categoria</label>
                 <input type="text" name="nombre"/>

@@ -58,6 +58,11 @@ public class ServicioBean implements ServicioBeanLocal {
     public Categoria buscarCategoria(int id) {
         return em.find(Categoria.class, id);
     }
+
+    @Override
+    public Usuario buscarUsuario(String rut) {
+        return em.find(Usuario.class, rut);
+    }
     
     
     

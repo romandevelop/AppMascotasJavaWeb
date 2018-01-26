@@ -19,7 +19,7 @@ public interface ServicioBeanLocal {
     void sincronizar(Object o);
     
     Categoria buscarCategoria(int id);
-    
+    Usuario buscarUsuario(String rut);
     
     List<Categoria> getCategorias();
     List<Producto> getProductos();

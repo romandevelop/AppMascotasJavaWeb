@@ -50,10 +50,55 @@ public class Controlador extends HttpServlet {
             case "nuevoproducto":
                 nuevoProducto(request, response);
                 break;
+            case "editardatos":
+                editarDatos(request, response);
+                break;    
+                
                 
         }
         
     }
+    
+    protected void editarDatos(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        String rut      = request.getParameter("rut");
+        String mail     = request.getParameter("mail");
+        String clave1   = request.getParameter("clave1");
+        String clave2   = request.getParameter("clave2");
+        
+        String errores = "";
+        if (mail.isEmpty()) {
+            errores = errores.concat("- Falta Correo");
+        }
+        if (clave1.isEmpty()) {
+            errores = errores.concat("- Falta Clave");
+        }
+        if (clave2.isEmpty()) {
+            errores = errores.concat("- Falta Confirmar Clave");
+        }
+        
+        if (!clave1.equals(clave2)) {
+            errores = errores.concat("- Claves no coinciden");
+        }
+        
+        if (errores.isEmpty()) {
+            Usuario user = servicio.buscarUsuario(rut);
+            user.setEmailUser(mail);
+            user.setClave(Hash.md5(clave1));
+            
+            servicio.sincronizar(user);
+            request.getSession().setAttribute("admin", user);
+            request.setAttribute("msg", "Datos actualizados");
+        }else{
+            request.setAttribute("msg", errores);
+        }
+        request.getRequestDispatcher("misdatos.jsp").forward(request, response);
+        
+        
+        
+    }
+    
     
     protected void nuevoProducto(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

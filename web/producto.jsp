@@ -11,6 +11,7 @@ value="<%=servicio.getProductos()%>"/>
 <div class="row">
     <div class="col s6 offset-s3">
         <div class="card-panel">
+            <h4 class="center-align">Productos</h4>
             <form action="control.do" method="post" enctype="multipart/form-data">
                 <label>Nombre</label>
                 <input type="text" name="nombre"/>

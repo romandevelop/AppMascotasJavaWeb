@@ -13,7 +13,7 @@
         <ul id="nav-mobile" class="right hide-on-med-and-down">
 
             <c:if test="${not empty sessionScope.admin}">
-                <li><a href="#">Mis Datos</a></li>
+                <li><a href="misdatos.jsp">Mis Datos</a></li>
                 <li><a href="categoria.jsp">Modulo Categoria</a></li>
                 <li><a href="producto.jsp">Modulo Producto</a></li>
                 <li><a href="#">Modulo Venta</a></li>
